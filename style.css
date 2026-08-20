@@ -1,42 +1,44 @@
 /* =========================================
-   ROOT VARIABLES
+   RESET
 ========================================= */
 
-:root {
-  --icon-width: 250px;
-  --icon-height: 200px;
-  --arrow-width: 50px;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-  --mobile-card-width: 145px;
-  --mobile-card-height: 110px;
-  --mobile-arrow-width: 35px;
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    background: #000;
+    color: #fff;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    overflow-x: hidden;
 }
 
 
 /* =========================================
-   GLOBAL STYLES
+   VARIABLES
 ========================================= */
 
-* {
-  box-sizing: border-box;
-}
+:root {
+    --desktop-card-width: 250px;
+    --desktop-card-height: 150px;
 
-html {
-  width: 100%;
-  overflow-x: hidden;
-}
+    --tablet-card-width: 190px;
+    --tablet-card-height: 120px;
 
-body {
-  margin: 0;
-  padding: 0;
+    --mobile-card-width: 145px;
+    --mobile-card-height: 90px;
 
-  background-color: black;
-  color: white;
-
-  overflow-x: hidden;
-  overflow-y: scroll;
-
-  font-family: Arial, Helvetica, sans-serif;
+    --arrow-width: 42px;
 }
 
 
@@ -45,97 +47,113 @@ body {
 ========================================= */
 
 .logo {
-  width: 200px;
-  max-width: 45vw;
+    display: block;
 
-  padding: 20px;
+    width: 110px;
+    height: auto;
 
-  display: block;
+    padding: 10px 0;
+
+    margin-left: 15px;
 }
 
 
 /* =========================================
-   CONTAINER
+   MAIN CONTAINER
 ========================================= */
 
 .container {
-  position: relative;
+    position: relative;
 
-  width: 100%;
-  max-width: 100%;
+    width: 100%;
 
-  overflow: visible;
+    margin: 0;
+
+    overflow: hidden;
 }
 
 
 /* =========================================
-   SLIDERS
+   ROW / SLIDER
 ========================================= */
 
 .slider,
 .slider2,
 .slider3 {
-  white-space: nowrap;
+    display: flex;
 
-  transition: transform 1s ease-in-out;
+    align-items: flex-start;
 
-  width: max-content;
+    gap: 8px;
 
-  padding: 20px 0;
+    width: max-content;
+
+    white-space: nowrap;
+
+    padding: 10px 0;
+
+    transition: transform 0.5s ease-in-out;
 }
 
 
 /* =========================================
-   MOVIE / CONTENT ITEM
+   MOVIE CARD
 ========================================= */
 
 .item {
-  width: var(--icon-width);
-  height: var(--icon-height);
+    flex: 0 0 var(--desktop-card-width);
 
-  display: inline-block;
+    width: var(--desktop-card-width);
 
-  position: relative;
+    height: var(--desktop-card-height);
 
-  margin-right: 8px;
+    position: relative;
 
-  color: white;
+    color: white;
 
-  font-size: 0.8rem;
+    text-align: center;
 
-  vertical-align: top;
+    transition: transform 0.25s ease;
 
-  transition:
-    transform 0.3s ease,
-    z-index 0.3s ease;
+    border-radius: 4px;
 
-  text-align: center;
-
-  border-radius: 4px;
-
-  overflow: visible;
+    overflow: visible;
 }
 
 
 /* First card spacing */
 
-.item:nth-of-type(1) {
-  margin-left: var(--arrow-width);
+.item:first-child {
+    margin-left: var(--arrow-width);
 }
 
 
 /* =========================================
-   HOVER EFFECT
+   MOVIE IMAGE
+========================================= */
+
+.item img,
+img {
+    display: block;
+
+    width: var(--desktop-card-width);
+
+    height: var(--desktop-card-height);
+
+    object-fit: cover;
+
+    border-radius: 4px;
+}
+
+
+/* =========================================
+   HOVER
 ========================================= */
 
 .item:hover {
-  transform: scale(1.15);
+    transform: scale(1.08);
 
-  z-index: 50;
-
-  border: 1px solid white;
-
-  background-color: #222;
+    z-index: 50;
 }
 
 
@@ -144,36 +162,32 @@ body {
 ========================================= */
 
 .description {
-  width: var(--icon-width);
+    position: absolute;
 
-  white-space: normal;
+    top: 100%;
+    left: 0;
 
-  visibility: hidden;
+    width: var(--desktop-card-width);
 
-  opacity: 0;
+    padding: 10px;
 
-  position: absolute;
+    background: #181818;
 
-  left: 0;
+    color: white;
 
-  top: 100%;
+    white-space: normal;
 
-  background-color: #222;
+    visibility: hidden;
 
-  padding: 8px 0;
+    opacity: 0;
 
-  z-index: 100;
-
-  transition: opacity 0.2s ease;
+    z-index: 100;
 }
 
-
-/* Show description on hover */
-
 .item:hover > .description {
-  visibility: visible;
+    visibility: visible;
 
-  opacity: 1;
+    opacity: 1;
 }
 
 
@@ -182,21 +196,19 @@ body {
 ========================================= */
 
 .descr-text {
-  height: 40px;
+    height: 40px;
 
-  display: block;
+    display: block;
 
-  overflow: hidden;
+    overflow: hidden;
 
-  padding: 0 10px;
+    padding: 0 5px;
 
-  text-align: left;
+    text-align: left;
 
-  white-space: normal;
+    font-size: 12px;
 
-  font-size: 12px;
-
-  line-height: 1.4;
+    line-height: 1.4;
 }
 
 
@@ -205,60 +217,37 @@ body {
 ========================================= */
 
 .descr-buttons-container {
-  display: flex;
+    display: flex;
 
-  flex-direction: row;
+    flex-direction: row;
 
-  align-items: center;
+    padding: 5px;
 
-  padding: 0 10px;
-
-  margin-top: 5px;
+    gap: 5px;
 }
 
 
 .descr-button {
-  display: flex;
+    width: 25px;
+    height: 25px;
 
-  align-items: center;
-  justify-content: center;
+    display: flex;
 
-  width: 25px;
-  height: 25px;
+    align-items: center;
+    justify-content: center;
 
-  border: 2px solid white;
+    border: 2px solid white;
 
-  text-align: center;
+    border-radius: 50%;
 
-  font-size: 9px;
+    font-size: 9px;
 
-  margin-right: 5px;
-
-  border-radius: 50%;
-
-  cursor: pointer;
+    cursor: pointer;
 }
 
 
 /* =========================================
-   IMAGES
-========================================= */
-
-img {
-  width: var(--icon-width);
-
-  height: var(--icon-height);
-
-  object-fit: cover;
-
-  display: block;
-
-  border-radius: 4px;
-}
-
-
-/* =========================================
-   SLIDER NAVIGATION BUTTONS
+   CAROUSEL ARROWS
 ========================================= */
 
 .previous,
@@ -267,43 +256,36 @@ img {
 .next,
 .next2,
 .next3 {
-  width: var(--arrow-width);
+    position: absolute;
 
-  height: var(--icon-height);
+    top: 50%;
 
-  border-radius: 5px;
+    transform: translateY(-50%);
 
-  position: absolute;
+    width: var(--arrow-width);
 
-  top: 50%;
+    height: var(--desktop-card-height);
 
-  transform: translateY(-50%);
+    display: flex;
 
-  background-color: rgba(0, 0, 0, 0.65);
+    align-items: center;
+    justify-content: center;
 
-  outline: none;
+    background: rgba(0, 0, 0, 0.65);
 
-  border: none;
+    border: none;
 
-  color: white;
+    color: white;
 
-  z-index: 100;
+    font-size: 28px;
 
-  cursor: pointer;
+    cursor: pointer;
 
-  display: flex;
+    z-index: 100;
 
-  align-items: center;
-
-  justify-content: center;
-
-  font-size: 22px;
-
-  transition: background-color 0.2s ease;
+    transition: background 0.2s ease;
 }
 
-
-/* Button hover */
 
 .previous:hover,
 .previous2:hover,
@@ -311,25 +293,21 @@ img {
 .next:hover,
 .next2:hover,
 .next3:hover {
-  background-color: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.9);
 }
 
-
-/* Right navigation */
-
-.next,
-.next2,
-.next3 {
-  right: 0;
-}
-
-
-/* Left navigation */
 
 .previous,
 .previous2,
 .previous3 {
-  left: 0;
+    left: 0;
+}
+
+
+.next,
+.next2,
+.next3 {
+    right: 0;
 }
 
 
@@ -339,50 +317,45 @@ img {
 
 @media screen and (max-width: 900px) {
 
-  :root {
-    --icon-width: 190px;
-    --icon-height: 150px;
-    --arrow-width: 45px;
-  }
+    :root {
+        --tablet-card-width: 185px;
+        --tablet-card-height: 115px;
+    }
 
-  .logo {
-    width: 170px;
-    padding: 15px;
-  }
+    .logo {
+        width: 100px;
+        margin-left: 12px;
+    }
 
-  .slider,
-  .slider2,
-  .slider3 {
-    padding: 15px 0;
-  }
+    .item {
+        flex-basis: var(--tablet-card-width);
 
-  .item {
-    margin-right: 6px;
-  }
+        width: var(--tablet-card-width);
 
-  .item:hover {
-    transform: scale(1.08);
-  }
+        height: var(--tablet-card-height);
+    }
 
-  .description {
-    width: var(--icon-width);
-  }
+    .item img,
+    img {
+        width: var(--tablet-card-width);
 
-  img {
-    width: var(--icon-width);
-    height: var(--icon-height);
-  }
+        height: var(--tablet-card-height);
+    }
 
-  .previous,
-  .previous2,
-  .previous3,
-  .next,
-  .next2,
-  .next3 {
-    height: var(--icon-height);
+    .description {
+        width: var(--tablet-card-width);
+    }
 
-    width: var(--arrow-width);
-  }
+    .previous,
+    .previous2,
+    .previous3,
+    .next,
+    .next2,
+    .next3 {
+        height: var(--tablet-card-height);
+
+        width: 40px;
+    }
 }
 
 
@@ -392,129 +365,165 @@ img {
 
 @media screen and (max-width: 600px) {
 
-  :root {
-    --icon-width: var(--mobile-card-width);
-    --icon-height: var(--mobile-card-height);
-    --arrow-width: var(--mobile-arrow-width);
-  }
+    :root {
+        --mobile-card-width: 145px;
+        --mobile-card-height: 90px;
+    }
 
 
-  /* Logo */
+    /* -------------------------------------
+       LOGO
+    ------------------------------------- */
 
-  .logo {
-    width: 135px;
+    .logo {
+        width: 95px;
 
-    max-width: 45vw;
+        height: auto;
 
-    padding: 12px;
-  }
+        padding: 5px 0;
 
+        margin-left: 10px;
 
-  /* Slider */
+        margin-top: 5px;
 
-  .slider,
-  .slider2,
-  .slider3 {
-    padding: 10px 0;
-
-    transition: transform 0.6s ease-in-out;
-  }
+        margin-bottom: 8px;
+    }
 
 
-  /* Cards */
+    /* -------------------------------------
+       CAROUSEL
+    ------------------------------------- */
 
-  .item {
-    width: var(--mobile-card-width);
+    .container {
+        overflow: hidden;
 
-    height: var(--mobile-card-height);
-
-    margin-right: 5px;
-
-    font-size: 0.7rem;
-  }
+        margin-bottom: 10px;
+    }
 
 
-  /* First card */
+    .slider,
+    .slider2,
+    .slider3 {
+        display: flex;
 
-  .item:nth-of-type(1) {
-    margin-left: var(--mobile-arrow-width);
-  }
+        gap: 6px;
 
+        padding: 8px 0;
 
-  /* Images */
+        width: max-content;
 
-  img {
-    width: var(--mobile-card-width);
+        transition: transform 0.4s ease-in-out;
 
-    height: var(--mobile-card-height);
+        /* Allows finger swiping */
 
-    object-fit: cover;
-  }
+        touch-action: pan-x;
 
-
-  /* Disable aggressive hover scaling on touch screens */
-
-  .item:hover {
-    transform: none;
-
-    border: none;
-
-    background-color: transparent;
-  }
+        user-select: none;
+    }
 
 
-  /* Hide descriptions on mobile */
+    /* -------------------------------------
+       CARDS
+    ------------------------------------- */
 
-  .description {
-    display: none;
-  }
+    .item {
+        flex: 0 0 var(--mobile-card-width);
 
+        width: var(--mobile-card-width);
 
-  /* Navigation buttons */
+        height: var(--mobile-card-height);
 
-  .previous,
-  .previous2,
-  .previous3,
-  .next,
-  .next2,
-  .next3 {
-    width: var(--mobile-arrow-width);
+        margin: 0;
 
-    height: var(--mobile-card-height);
-
-    font-size: 18px;
-
-    background-color: rgba(0, 0, 0, 0.7);
-  }
+        transition: none;
+    }
 
 
-  /* Keep arrows vertically centered */
-
-  .previous,
-  .previous2,
-  .previous3,
-  .next,
-  .next2,
-  .next3 {
-    top: 50%;
-
-    transform: translateY(-50%);
-  }
+    .item:first-child {
+        margin-left: 38px;
+    }
 
 
-  /* Buttons remain on edges */
+    /* -------------------------------------
+       IMAGES
+    ------------------------------------- */
 
-  .previous,
-  .previous2,
-  .previous3 {
-    left: 0;
-  }
+    .item img,
+    img {
+        width: var(--mobile-card-width);
 
-  .next,
-  .next2,
-  .next3 {
-    right: 0;
-  }
+        height: var(--mobile-card-height);
+
+        object-fit: cover;
+
+        border-radius: 3px;
+    }
+
+
+    /* -------------------------------------
+       DISABLE DESKTOP HOVER
+    ------------------------------------- */
+
+    .item:hover {
+        transform: none;
+
+        border: none;
+    }
+
+
+    /* -------------------------------------
+       HIDE DESCRIPTION ON MOBILE
+    ------------------------------------- */
+
+    .description {
+        display: none;
+    }
+
+
+    /* -------------------------------------
+       ARROWS
+    ------------------------------------- */
+
+    .previous,
+    .previous2,
+    .previous3,
+    .next,
+    .next2,
+    .next3 {
+
+        width: 32px;
+
+        height: var(--mobile-card-height);
+
+        font-size: 22px;
+
+        background: rgba(0, 0, 0, 0.65);
+    }
+
+
+    .previous,
+    .previous2,
+    .previous3 {
+        left: 0;
+    }
+
+
+    .next,
+    .next2,
+    .next3 {
+        right: 0;
+    }
+
+
+    /* -------------------------------------
+       TITLES
+    ------------------------------------- */
+
+    h1,
+    h2,
+    h3 {
+        margin-left: 8px;
+    }
 }
 
 
@@ -524,29 +533,32 @@ img {
 
 @media screen and (max-width: 380px) {
 
-  :root {
-    --mobile-card-width: 125px;
-    --mobile-card-height: 95px;
-    --mobile-arrow-width: 30px;
-  }
+    :root {
+        --mobile-card-width: 125px;
+        --mobile-card-height: 80px;
+    }
 
 
-  .logo {
-    width: 120px;
-  }
+    .logo {
+        width: 85px;
+    }
 
 
-  .item {
-    margin-right: 4px;
-  }
+    .item:first-child {
+        margin-left: 32px;
+    }
 
 
-  .previous,
-  .previous2,
-  .previous3,
-  .next,
-  .next2,
-  .next3 {
-    font-size: 15px;
-  }
+    .previous,
+    .previous2,
+    .previous3,
+    .next,
+    .next2,
+    .next3 {
+        width: 28px;
+
+        height: var(--mobile-card-height);
+
+        font-size: 18px;
+    }
 }
