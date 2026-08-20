@@ -1,12 +1,12 @@
-Netflix Clone
+## Netflix Clone
 A responsive Netflix-inspired web application built to demonstrate front-end web development skills using HTML, CSS, and JavaScript.
 
 The project recreates the visual experience of a modern streaming platform, with a focus on responsive design, user interface development, and interactive front-end functionality.
 
-Project Overview
+## Project Overview
 The application focuses on recreating key elements of a streaming service such as Netflix, including its visual layout, navigation, content presentation, and responsive user experience.
 
-Technologies Used
+## Technologies Used
 HTML5 — Application structure and semantic markup
 CSS3 — Styling, layouts, responsiveness, and visual design
 JavaScript — Client-side functionality and interactions
@@ -19,7 +19,8 @@ netflixClone/
 ├── script.js        # JavaScript functionality
 ├── logo.png         # Application logo/branding
 └── README.md        # Project documentation
-Key Features
+
+## Key Features
 Netflix-inspired user interface
 Responsive web layout
 Custom CSS styling
