@@ -8,13 +8,17 @@
     padding: 0;
 }
 
-html,
-body {
+html {
     width: 100%;
     min-height: 100%;
+
+    scroll-behavior: smooth;
 }
 
 body {
+    width: 100%;
+    min-height: 100vh;
+
     background: #000;
     color: #fff;
 
@@ -29,15 +33,24 @@ body {
 ========================================= */
 
 :root {
+
+    /* Desktop */
     --desktop-card-width: 250px;
     --desktop-card-height: 150px;
 
-    --tablet-card-width: 190px;
-    --tablet-card-height: 120px;
+    /* Tablet */
+    --tablet-card-width: 185px;
+    --tablet-card-height: 115px;
 
-    --mobile-card-width: 145px;
-    --mobile-card-height: 90px;
+    /* Mobile */
+    --mobile-card-width: 115px;
+    --mobile-card-height: 170px;
 
+    /* Small phones */
+    --small-mobile-card-width: 100px;
+    --small-mobile-card-height: 148px;
+
+    /* Arrows */
     --arrow-width: 42px;
 }
 
@@ -52,14 +65,26 @@ body {
     width: 110px;
     height: auto;
 
-    padding: 10px 0;
-
-    margin-left: 15px;
+    margin: 10px 0 20px 15px;
 }
 
 
 /* =========================================
-   MAIN CONTAINER
+   SECTION TITLES
+========================================= */
+
+h1,
+h2,
+h3 {
+    margin-left: 15px;
+    margin-bottom: 10px;
+
+    color: #fff;
+}
+
+
+/* =========================================
+   MAIN CAROUSEL CONTAINER
 ========================================= */
 
 .container {
@@ -67,32 +92,51 @@ body {
 
     width: 100%;
 
-    margin: 0;
+    margin-bottom: 30px;
 
     overflow: hidden;
 }
 
 
 /* =========================================
-   ROW / SLIDER
+   SLIDERS
 ========================================= */
 
 .slider,
 .slider2,
 .slider3 {
+
     display: flex;
 
     align-items: flex-start;
 
     gap: 8px;
 
-    width: max-content;
+    width: 100%;
 
-    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
 
-    padding: 10px 0;
+    padding: 10px 45px;
 
-    transition: transform 0.5s ease-in-out;
+    scroll-behavior: smooth;
+
+    scrollbar-width: none;
+
+    -webkit-overflow-scrolling: touch;
+
+    touch-action: pan-x;
+
+    user-select: none;
+}
+
+
+/* Hide scrollbar */
+
+.slider::-webkit-scrollbar,
+.slider2::-webkit-scrollbar,
+.slider3::-webkit-scrollbar {
+    display: none;
 }
 
 
@@ -101,30 +145,24 @@ body {
 ========================================= */
 
 .item {
+
+    position: relative;
+
     flex: 0 0 var(--desktop-card-width);
 
     width: var(--desktop-card-width);
 
     height: var(--desktop-card-height);
 
-    position: relative;
-
-    color: white;
+    color: #fff;
 
     text-align: center;
-
-    transition: transform 0.25s ease;
 
     border-radius: 4px;
 
     overflow: visible;
-}
 
-
-/* First card spacing */
-
-.item:first-child {
-    margin-left: var(--arrow-width);
+    transition: transform 0.25s ease;
 }
 
 
@@ -132,13 +170,13 @@ body {
    MOVIE IMAGE
 ========================================= */
 
-.item img,
-img {
+.item img {
+
     display: block;
 
-    width: var(--desktop-card-width);
+    width: 100%;
 
-    height: var(--desktop-card-height);
+    height: 100%;
 
     object-fit: cover;
 
@@ -147,11 +185,12 @@ img {
 
 
 /* =========================================
-   HOVER
+   DESKTOP HOVER
 ========================================= */
 
 .item:hover {
-    transform: scale(1.08);
+
+    transform: scale(1.06);
 
     z-index: 50;
 }
@@ -162,18 +201,19 @@ img {
 ========================================= */
 
 .description {
+
     position: absolute;
 
     top: 100%;
     left: 0;
 
-    width: var(--desktop-card-width);
+    width: 100%;
 
     padding: 10px;
 
     background: #181818;
 
-    color: white;
+    color: #fff;
 
     white-space: normal;
 
@@ -182,9 +222,15 @@ img {
     opacity: 0;
 
     z-index: 100;
+
+    transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease;
 }
 
+
 .item:hover > .description {
+
     visibility: visible;
 
     opacity: 1;
@@ -196,9 +242,10 @@ img {
 ========================================= */
 
 .descr-text {
-    height: 40px;
 
     display: block;
+
+    height: 40px;
 
     overflow: hidden;
 
@@ -217,17 +264,19 @@ img {
 ========================================= */
 
 .descr-buttons-container {
+
     display: flex;
 
     flex-direction: row;
 
-    padding: 5px;
-
     gap: 5px;
+
+    padding: 5px;
 }
 
 
 .descr-button {
+
     width: 25px;
     height: 25px;
 
@@ -236,7 +285,7 @@ img {
     align-items: center;
     justify-content: center;
 
-    border: 2px solid white;
+    border: 2px solid #fff;
 
     border-radius: 50%;
 
@@ -256,6 +305,7 @@ img {
 .next,
 .next2,
 .next3 {
+
     position: absolute;
 
     top: 50%;
@@ -271,17 +321,17 @@ img {
     align-items: center;
     justify-content: center;
 
-    background: rgba(0, 0, 0, 0.65);
+    background: rgba(0, 0, 0, 0.7);
 
     border: none;
 
-    color: white;
+    color: #fff;
 
     font-size: 28px;
 
     cursor: pointer;
 
-    z-index: 100;
+    z-index: 200;
 
     transition: background 0.2s ease;
 }
@@ -293,7 +343,8 @@ img {
 .next:hover,
 .next2:hover,
 .next3:hover {
-    background: rgba(0, 0, 0, 0.9);
+
+    background: rgba(0, 0, 0, 0.95);
 }
 
 
@@ -318,33 +369,52 @@ img {
 @media screen and (max-width: 900px) {
 
     :root {
+
         --tablet-card-width: 185px;
+
         --tablet-card-height: 115px;
     }
 
+
     .logo {
+
         width: 100px;
+
         margin-left: 12px;
+
+        margin-bottom: 15px;
     }
+
+
+    h1,
+    h2,
+    h3 {
+
+        margin-left: 12px;
+
+        font-size: 21px;
+    }
+
+
+    .slider,
+    .slider2,
+    .slider3 {
+
+        gap: 8px;
+
+        padding: 8px 40px;
+    }
+
 
     .item {
-        flex-basis: var(--tablet-card-width);
+
+        flex: 0 0 var(--tablet-card-width);
 
         width: var(--tablet-card-width);
 
         height: var(--tablet-card-height);
     }
 
-    .item img,
-    img {
-        width: var(--tablet-card-width);
-
-        height: var(--tablet-card-height);
-    }
-
-    .description {
-        width: var(--tablet-card-width);
-    }
 
     .previous,
     .previous2,
@@ -352,9 +422,12 @@ img {
     .next,
     .next2,
     .next3 {
-        height: var(--tablet-card-height);
 
         width: 40px;
+
+        height: var(--tablet-card-height);
+
+        font-size: 24px;
     }
 }
 
@@ -366,8 +439,10 @@ img {
 @media screen and (max-width: 600px) {
 
     :root {
-        --mobile-card-width: 145px;
-        --mobile-card-height: 90px;
+
+        --mobile-card-width: 115px;
+
+        --mobile-card-height: 170px;
     }
 
 
@@ -376,17 +451,28 @@ img {
     ------------------------------------- */
 
     .logo {
+
         width: 95px;
 
         height: auto;
 
-        padding: 5px 0;
+        margin: 5px 0 18px 10px;
+    }
+
+
+    /* -------------------------------------
+       TITLES
+    ------------------------------------- */
+
+    h1,
+    h2,
+    h3 {
 
         margin-left: 10px;
 
-        margin-top: 5px;
-
         margin-bottom: 8px;
+
+        font-size: 18px;
     }
 
 
@@ -395,38 +481,45 @@ img {
     ------------------------------------- */
 
     .container {
-        overflow: hidden;
 
-        margin-bottom: 10px;
+        width: 100%;
+
+        margin-bottom: 25px;
+
+        overflow: hidden;
     }
 
 
     .slider,
     .slider2,
     .slider3 {
-        display: flex;
 
         gap: 6px;
 
-        padding: 8px 0;
+        width: 100%;
 
-        width: max-content;
+        padding: 8px 38px;
 
-        transition: transform 0.4s ease-in-out;
+        overflow-x: auto;
 
-        /* Allows finger swiping */
+        overflow-y: hidden;
+
+        scroll-behavior: smooth;
+
+        scrollbar-width: none;
+
+        -webkit-overflow-scrolling: touch;
 
         touch-action: pan-x;
-
-        user-select: none;
     }
 
 
     /* -------------------------------------
-       CARDS
+       MOVIE CARDS
     ------------------------------------- */
 
     .item {
+
         flex: 0 0 var(--mobile-card-width);
 
         width: var(--mobile-card-width);
@@ -439,20 +532,15 @@ img {
     }
 
 
-    .item:first-child {
-        margin-left: 38px;
-    }
-
-
     /* -------------------------------------
-       IMAGES
+       MOVIE IMAGES
     ------------------------------------- */
 
-    .item img,
-    img {
-        width: var(--mobile-card-width);
+    .item img {
 
-        height: var(--mobile-card-height);
+        width: 100%;
+
+        height: 100%;
 
         object-fit: cover;
 
@@ -461,13 +549,14 @@ img {
 
 
     /* -------------------------------------
-       DISABLE DESKTOP HOVER
+       DISABLE HOVER ON MOBILE
     ------------------------------------- */
 
     .item:hover {
+
         transform: none;
 
-        border: none;
+        z-index: 1;
     }
 
 
@@ -476,12 +565,13 @@ img {
     ------------------------------------- */
 
     .description {
+
         display: none;
     }
 
 
     /* -------------------------------------
-       ARROWS
+       MOBILE ARROWS
     ------------------------------------- */
 
     .previous,
@@ -495,15 +585,16 @@ img {
 
         height: var(--mobile-card-height);
 
-        font-size: 22px;
+        font-size: 20px;
 
-        background: rgba(0, 0, 0, 0.65);
+        background: rgba(0, 0, 0, 0.75);
     }
 
 
     .previous,
     .previous2,
     .previous3 {
+
         left: 0;
     }
 
@@ -511,18 +602,8 @@ img {
     .next,
     .next2,
     .next3 {
+
         right: 0;
-    }
-
-
-    /* -------------------------------------
-       TITLES
-    ------------------------------------- */
-
-    h1,
-    h2,
-    h3 {
-        margin-left: 8px;
     }
 }
 
@@ -534,18 +615,50 @@ img {
 @media screen and (max-width: 380px) {
 
     :root {
-        --mobile-card-width: 125px;
-        --mobile-card-height: 80px;
+
+        --small-mobile-card-width: 100px;
+
+        --small-mobile-card-height: 148px;
     }
 
 
     .logo {
+
         width: 85px;
+
+        margin-left: 8px;
     }
 
 
-    .item:first-child {
-        margin-left: 32px;
+    h1,
+    h2,
+    h3 {
+
+        margin-left: 8px;
+
+        font-size: 16px;
+    }
+
+
+    .slider,
+    .slider2,
+    .slider3 {
+
+        gap: 5px;
+
+        padding-left: 34px;
+
+        padding-right: 34px;
+    }
+
+
+    .item {
+
+        flex: 0 0 var(--small-mobile-card-width);
+
+        width: var(--small-mobile-card-width);
+
+        height: var(--small-mobile-card-height);
     }
 
 
@@ -555,10 +668,11 @@ img {
     .next,
     .next2,
     .next3 {
+
         width: 28px;
 
-        height: var(--mobile-card-height);
+        height: var(--small-mobile-card-height);
 
-        font-size: 18px;
+        font-size: 17px;
     }
 }
